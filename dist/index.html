@@ -3,7 +3,7 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>MVP Fund | Панель управления</title>
 
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -13,7 +13,7 @@
     <!--end::Accessibility Meta Tags-->
 
     <!--begin::Primary Meta Tags-->
-    <meta name="title" content="AdminLTE v4 | Dashboard" />
+    <meta name="title" content="MVP Fund | Панель управления" />
     <meta name="author" content="ColorlibHQ" />
     <meta
       name="description"
@@ -77,6 +77,139 @@
       integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
       crossorigin="anonymous"
     />
+
+    <!-- MVP Fund: кастомные стили -->
+    <style>
+      /* ——— Усиленная цветовая схема: тёмный сайдбар + светлый контент ——— */
+      .app-sidebar {
+        background: linear-gradient(180deg, #0f172a 0%, #020617 100%) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+      }
+      .app-sidebar .brand-link,
+      .app-sidebar .brand-text {
+        color: #f8fafc !important;
+        font-weight: 600;
+      }
+      .app-main {
+        background-color: #f1f5f9 !important;
+      }
+      .app-content-header {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid #cbd5e1;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+      .app-content {
+        background-color: #f1f5f9 !important;
+      }
+      .app-header.navbar {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid #cbd5e1;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      /* ——— 1. Карточки метрик: свой стиль (скругления, тень, hover) ——— */
+      .app-content .small-box {
+        border-radius: 18px !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        padding: 1.5rem 1.25rem !important;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        overflow: hidden;
+        border: none !important;
+      }
+      .app-content .small-box .inner {
+        padding: 0.2rem 0 !important;
+      }
+      .app-content .small-box .inner h3 {
+        font-weight: 800 !important;
+        font-size: 1.9rem !important;
+        letter-spacing: -0.03em;
+        line-height: 1.25 !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+      .app-content .small-box .inner p {
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        opacity: 1;
+        margin-bottom: 0.35rem !important;
+      }
+      .app-content .small-box .small-box-footer {
+        margin-top: 0.85rem !important;
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+      }
+      .app-content .small-box:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18), 0 6px 16px rgba(0, 0, 0, 0.12) !important;
+      }
+
+      /* ——— 2. Карточка графика (Sales Value): отдельный стиль ——— */
+      .app-content .col-lg-7.connectedSortable > .card.mb-4:first-of-type {
+        border-radius: 16px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04) !important;
+        border-left: 4px solid #6366f1 !important;
+        background: #ffffff !important;
+        transition: box-shadow 0.25s ease, border-color 0.2s ease;
+      }
+      .app-content .col-lg-7.connectedSortable > .card.mb-4:first-of-type:hover {
+        box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15), 0 0 0 1px rgba(99, 102, 241, 0.2) !important;
+        border-left-color: #4f46e5 !important;
+      }
+      .app-content .col-lg-7.connectedSortable > .card.mb-4:first-of-type .card-header {
+        border-bottom: 1px solid #e2e8f0;
+        font-weight: 600;
+      }
+
+      /* ——— 3. Карточка с картой мира: свой стиль ——— */
+      .app-content .col-lg-5.connectedSortable > .card.bg-primary.bg-gradient {
+        border-radius: 20px !important;
+        box-shadow: 0 12px 32px rgba(30, 58, 138, 0.35), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        border: none !important;
+        overflow: hidden;
+        background: linear-gradient(145deg, #1e40af 0%, #1e3a8a 50%, #172554 100%) !important;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .app-content .col-lg-5.connectedSortable > .card.bg-primary.bg-gradient:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 44px rgba(30, 58, 138, 0.4), 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+      }
+      .app-content .col-lg-5.connectedSortable > .card.bg-primary.bg-gradient .card-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* ——— 4. Виджет чата (Direct Chat): отдельный стиль ——— */
+      .app-content .card.direct-chat.direct-chat-primary {
+        border-radius: 16px !important;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+        border-top: 4px solid #0d9488 !important;
+        background: #ffffff !important;
+        transition: box-shadow 0.25s ease, border-color 0.2s ease;
+      }
+      .app-content .card.direct-chat.direct-chat-primary:hover {
+        box-shadow: 0 14px 36px rgba(13, 148, 136, 0.12), 0 0 0 1px rgba(13, 148, 136, 0.15) !important;
+        border-top-color: #0f766e !important;
+      }
+      .app-content .card.direct-chat.direct-chat-primary .card-header {
+        background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%) !important;
+        border-bottom: 1px solid #99f6e4;
+        font-weight: 600;
+      }
+
+      /* Hover пунктов бокового меню */
+      .app-sidebar .sidebar-menu .nav-link {
+        border-radius: 10px !important;
+        margin: 0 0.5rem 3px 0.5rem !important;
+        transition: background-color 0.15s ease, box-shadow 0.15s ease;
+      }
+      .app-sidebar .sidebar-menu .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.12) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+      }
+      .app-sidebar .sidebar-menu .nav-link.active {
+        background-color: rgba(99, 102, 241, 0.35) !important;
+        box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.4);
+      }
+    </style>
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -95,10 +228,10 @@
               </a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="#" class="nav-link">Home</a>
+              <a href="#" class="nav-link">Главная</a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="#" class="nav-link">Contact</a>
+              <a href="#" class="nav-link">Контакты</a>
             </li>
           </ul>
           <!--end::Start Navbar Links-->
@@ -245,22 +378,22 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="./assets/img/ai-hero-avatar.jpg"
+                  src="https://ui-avatars.com/api/?name=MVP+Fund&size=128&background=6366f1&color=fff"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">AI HERO 2</span>
+                <span class="d-none d-md-inline">MVP Fund</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="./assets/img/ai-hero-avatar.jpg"
+                    src="https://ui-avatars.com/api/?name=MVP+Fund&size=128&background=6366f1&color=fff"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
                   <p>
-                    AI HERO 2 - Web Developer
+                    MVP Fund
                     <small>Member since Nov. 2023</small>
                   </p>
                 </li>
@@ -311,7 +444,7 @@
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">AdminLTE 4</span>
+            <span class="brand-text fw-light">MVP Fund</span>
             <!--end::Brand Text-->
           </a>
           <!--end::Brand Link-->
@@ -333,7 +466,7 @@
                 <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
-                    Dashboard
+                    Обзор
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
@@ -341,19 +474,19 @@
                   <li class="nav-item">
                     <a href="./index.html" class="nav-link active">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v1</p>
+                      <p>Панель управления</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./index2.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v2</p>
+                      <p>Обзор v2</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="./index3.html" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Dashboard v3</p>
+                      <p>Обзор v3</p>
                     </a>
                   </li>
                 </ul>
@@ -361,14 +494,14 @@
               <li class="nav-item">
                 <a href="./generate/theme.html" class="nav-link">
                   <i class="nav-icon bi bi-palette"></i>
-                  <p>Theme Generate</p>
+                  <p>Тема</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-box-seam-fill"></i>
                   <p>
-                    Widgets
+                    Виджеты
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
@@ -397,7 +530,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-clipboard-fill"></i>
                   <p>
-                    Layout Options
+                    Настройки
                     <span class="nav-badge badge text-bg-secondary me-3">6</span>
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
@@ -469,7 +602,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-tree-fill"></i>
                   <p>
-                    UI Elements
+                    Элементы
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
@@ -498,7 +631,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-pencil-square"></i>
                   <p>
-                    Forms
+                    Формы
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
@@ -515,7 +648,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-table"></i>
                   <p>
-                    Tables
+                    Таблицы
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
@@ -779,12 +912,12 @@
             <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h3 class="mb-0">Dashboard</h3>
+                <h3 class="mb-0">Панель управления</h3>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                  <li class="breadcrumb-item"><a href="#">Главная</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Панель управления</li>
                 </ol>
               </div>
             </div>
